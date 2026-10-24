@@ -1,0 +1,198 @@
+{
+  "observacao": "Reels da Lay (agentes Ultron e Lalita). Takes escolhidos pelo olhar (folha a cada 0,25 s) e pela deixa da equipe ('Perfeito', 'Show', 'graças a Deus'). Cortes no som medido com silencedetect. Enquadre 1,2x: cx = centro do recorte (fração de 2160), y0 = topo (px no 4K vertical). tipo 'tela' = a câmera filmando o notebook: sem recorte nem quadro, sem desfoque (o dono do canal pediu as telas como foram filmadas). s14 foi dividido para tirar a pausa de 0,9 s depois de 'semana' (o dono do canal: 'demorou muito'). v3 do dono do canal: o Jira saiu da tela parada; ela fala em câmera (C2123, olhar na câmera) e a tela entra só quando ela abre o card (C2126). v4 do dono do canal (23/10): cor 'dourado' (cor/looks.py), tirada do vídeo de referência youtu.be/pUPK1pHW6MU; o corte de tela fica em 'efizi' para não tingir a tela. v6 (23/10): emenda do Jira refeita — o take 2 começava colado no 'avisa' anterior (voz picotada, o dono do canal reclamou); agora take 1 até 'acha,' (silêncio em 39,30–39,40) e take 2 inteiro de 'avisa' (133,02) até o fim de 'Jira'; mesma soma de quadros (134), sem deslocar o resto.",
+  "crop": {
+    "w": 1800,
+    "h": 3200
+  },
+  "enquadre": {
+    "C2118": {
+      "cx": 0.66,
+      "y0": 420
+    },
+    "C2120": {
+      "cx": 0.5,
+      "y0": 420
+    },
+    "C2121": {
+      "cx": 0.5,
+      "y0": 420
+    },
+    "C2122": {
+      "cx": 0.5,
+      "y0": 420
+    },
+    "C2123": {
+      "cx": 0.52,
+      "y0": 420
+    },
+    "C2124": {
+      "cx": 0.52,
+      "y0": 420
+    },
+    "C2125": {
+      "cx": 0.46,
+      "y0": 420
+    },
+    "C2126": {
+      "cx": 0.36,
+      "y0": 0,
+      "w": 1440,
+      "h": 2560
+    }
+  },
+  "cortes": [
+    {
+      "id": "s01_gancho",
+      "clip": "C2118",
+      "in": 1.2,
+      "out": 6.5,
+      "look": "dourado",
+      "texto": "A Efizi vende biodigestor. E tem agentes de IA trabalhando aqui dentro."
+    },
+    {
+      "id": "s02_ultron",
+      "clip": "C2120",
+      "in": 61.45,
+      "out": 66.75,
+      "look": "dourado",
+      "texto": "Esse aqui é o Ultron. E no final eu vou te mostrar a parte que mais me surpreendeu:"
+    },
+    {
+      "id": "s03_sozinhos",
+      "clip": "C2120",
+      "in": 67.95,
+      "out": 70.35,
+      "look": "dourado",
+      "texto": "eles aprendem sozinhos."
+    },
+    {
+      "id": "s04_roda",
+      "clip": "C2121",
+      "in": 49.82,
+      "out": 54.1,
+      "look": "dourado",
+      "texto": "O Ultron roda o tempo todo sozinho aqui nos repositórios da empresa."
+    },
+    {
+      "id": "s05_ninguem",
+      "clip": "C2122",
+      "in": 32.28,
+      "out": 34.9,
+      "look": "dourado",
+      "texto": "E ninguém precisa mandar ele fazer nada."
+    },
+    {
+      "id": "s06a_varre",
+      "clip": "C2123",
+      "in": 36.36,
+      "out": 39.36,
+      "look": "dourado",
+      "texto": "Ele varre o código atrás de problemas e quando acha,"
+    },
+    {
+      "id": "s06b_jira",
+      "clip": "C2123",
+      "in": 133.02,
+      "out": 135.5225,
+      "look": "dourado",
+      "texto": "avisa e abre um card no Jira"
+    },
+    {
+      "id": "s06c_card",
+      "clip": "C2126",
+      "in": 157.7766,
+      "out": 161.38,
+      "look": "efizi",
+      "tipo": "tela",
+      "texto": "e manda um alerta pra gente. Olha esse card aqui que ele acabou de abrir."
+    },
+    {
+      "id": "s07_parado",
+      "clip": "C2123",
+      "in": 210.05,
+      "out": 212.85,
+      "look": "dourado",
+      "texto": "Só que card parado não resolve nada."
+    },
+    {
+      "id": "s08_lalita",
+      "clip": "C2123",
+      "in": 218.4,
+      "out": 220.55,
+      "look": "dourado",
+      "texto": "É aí que entra a Lalita."
+    },
+    {
+      "id": "s09_pr",
+      "clip": "C2124",
+      "in": 42.88,
+      "out": 46.8,
+      "look": "dourado",
+      "texto": "Ela pega esse card, desenvolve a correção e abre o PR."
+    },
+    {
+      "id": "s10_criar",
+      "clip": "C2124",
+      "in": 129.95,
+      "out": 135.3,
+      "look": "dourado",
+      "texto": "E esses dois não são os únicos. Quando a gente precisa de um agente novo, é só clicar aqui."
+    },
+    {
+      "id": "s11_prometi",
+      "clip": "C2124",
+      "in": 141.75,
+      "out": 146.55,
+      "look": "dourado",
+      "texto": "E agora a parte que eu prometi: eles aprendem sozinhos."
+    },
+    {
+      "id": "s12_corrijo",
+      "clip": "C2124",
+      "in": 184.3,
+      "out": 188.45,
+      "look": "dourado",
+      "texto": "Quando eu corrijo um agente, ele guarda a correção e não repete o mesmo erro."
+    },
+    {
+      "id": "s13_descobre",
+      "clip": "C2124",
+      "in": 257.9,
+      "out": 262.75,
+      "look": "dourado",
+      "texto": "E às vezes ele descobre as coisas por conta própria. Dá uma olhada nisso aqui."
+    },
+    {
+      "id": "s14a_semana",
+      "clip": "C2125",
+      "in": 7.95,
+      "out": 12.997,
+      "look": "dourado",
+      "texto": "Isso significa que o nosso time de agentes fica mais inteligente a cada semana,"
+    },
+    {
+      "id": "s14b_treinar",
+      "clip": "C2125",
+      "in": 13.873,
+      "out": 16.25,
+      "look": "dourado",
+      "texto": "sem ninguém precisar ficar treinando."
+    },
+    {
+      "id": "s15_cultura",
+      "clip": "C2125",
+      "in": 147.8,
+      "out": 151.7,
+      "look": "dourado",
+      "texto": "É assim que a Efizi está construindo uma cultura AI first."
+    },
+    {
+      "id": "s16_segue",
+      "clip": "C2125",
+      "in": 255.62,
+      "out": 259.45,
+      "look": "dourado",
+      "texto": "Ficou curioso? Segue a Efizi Tech pra mais conteúdos como esse."
+    }
+  ]
+}
