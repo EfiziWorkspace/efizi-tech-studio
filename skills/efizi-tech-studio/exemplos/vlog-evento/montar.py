@@ -12,6 +12,7 @@ NOITE = ("ida5", "ida6", "volta1", "volta2")      # cenas noturnas/telas: não p
 AMBIENTE_LUFS = -30.0 if versao == "v1" else -31.0  # som ambiente baixo, por baixo da narração/música
 VOZ_LUFS = -16.0
 GANHO_MAX = 18.0
+SAT_GLOBAL = float(os.environ.get("SAT_GLOBAL", "0.8"))
 
 def medir_cor(f):
     cache = f + ".cor.json"
@@ -53,11 +54,11 @@ for i, x in enumerate(cortes):
     g = 1.0
     if not x["noite"]:
         y, t = k["YAVG"] / 255, (k["YAVG"] + 0.6 * (alvo_y - k["YAVG"])) / 255
-        g = clamp(math.log(y) / math.log(t), 0.82, 1.25)
+        g = clamp(math.log(y) / math.log(t), 0.9, 1.15)
     # tinta: tira 60% do desvio de U/V em relação à mediana do dia (máx. 6 níveis em 8 bits)
     du = clamp(0.6 * (k["UAVG"] - alvo_u), -6, 6) * 4
     dv = clamp(0.6 * (k["VAVG"] - alvo_v), -6, 6) * 4
-    s = clamp(1 + 0.6 * (alvo_sat / max(k["SATAVG"], 1) - 1), 0.85, 1.12)
+    s = clamp(1 + 0.6 * (alvo_sat / max(k["SATAVG"], 1) - 1), 0.8, 1.0) * SAT_GLOBAL
     v = ("format=yuv422p10le,"
          f"lutyuv=u='clip(val-({du:.1f}),0,1023)':v='clip(val-({dv:.1f}),0,1023)',"
          f"eq=gamma={g:.3f}:saturation={s:.3f}:contrast=1.04,"

@@ -18,8 +18,10 @@ narrar por cima e outra só com música), sem legenda nem encerramento. Os víde
   Converter com `zscale … npl=203 → tonemap=mobius:param=0.3:desat=0 → bt709` deixou natural; `hable` ficou
   escuro e "só marcar como bt709" ficou lavado.
 - **Igualar por número:** média de luma/saturação/tinta (signalstats) de cada corte, puxando 60% do caminho
-  até a mediana das cenas de dia. Noite e telas ficam fora da correção de exposição. Saturação acima de 1,12
-  deixou a pele rosada.
+  até a mediana das cenas de dia. Noite e telas ficam fora da correção de exposição.
+- **"Ficou muito saturado"** (v1 reprovada): o tonemap com `desat=0` já entrega cor forte; somar saturação
+  (até 1,12) e escurecer os médios das cenas claras (gama 0,82) adensou a cor. Aprovado: a correção nunca
+  aumenta saturação (0,8–1,0) × 0,8 global e gama limitado a 0,9–1,15 — saturação média caiu de ~17,5 para ~13,5.
 - **Som ambiente** a −30/−31 LUFS por corte (ganho máx. +18 dB), fala a −16 LUFS; fade de 30 ms nos cortes e
   de 8 ms na entrada da fala (senão a primeira sílaba perde o ataque).
 - **Ordem cronológica** dos clipes sem nome: `com.apple.quicktime.creationdate` no ffprobe.
