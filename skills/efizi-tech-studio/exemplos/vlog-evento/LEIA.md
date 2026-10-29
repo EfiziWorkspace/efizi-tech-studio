@@ -7,9 +7,9 @@ narrar por cima e outra só com música), sem legenda nem encerramento. Os víde
 
 | Arquivo | Papel |
 | --- | --- |
-| `edl.py` | lista de cortes das duas versões (`V1` narrada ~77 s, `V2` música ~55 s), na ordem do dia |
+| `edl.py` | lista de cortes das duas versões (`V1` narrada ~67 s, `V2` música ~52 s), na ordem do dia |
 | `cortar.py` | cada corte → ProRes 422 HQ 10 bits, 1080×1920, 30 fps, SDR Rec.709 |
-| `montar.py` | mede cor e volume de cada corte, iguala e junta: `python montar.py v1 cortes/ saida/v1.mp4` |
+| `montar.py` | iguala o volume de cada corte e junta: `python montar.py v1 cortes/ saida/v1.mp4` (`IGUALAR=1` liga a correção de cor por corte) |
 | `transcrever.py` | faster-whisper `medium` em pt, com tempo por palavra (para escolher a fala e o ponto de corte) |
 
 ## Lições deste vídeo
@@ -29,3 +29,8 @@ narrar por cima e outra só com música), sem legenda nem encerramento. Os víde
   título → opção `tela` no `edl.py`: só a faixa do título no centro, fundo = a mesma faixa desfocada.
 - **Rede da nuvem:** o conector do Drive não baixa arquivo > 10 MB; liberar `drive.usercontent.google.com`
   com o link aberto. O modelo do Whisper precisa de `huggingface.co` e `*.hf.co` (com `HF_HUB_DISABLE_XET=1`).
+- **v2 → v3, pedido de quem grava:** "deixa na iluminação natural dos vídeos" — a correção de cor por corte saiu
+  (fica só a conversão HDR → SDR). Takes: no selfie pegar o **tchau**, não a pessoa trazendo a câmera para
+  desligar; janta = **um** pedaço, comendo (pose com a mão no cabelo saiu); a fala no meio do evento era
+  desnecessária; o fim mostra a tela do notebook apagando, sem recorte (a tela de login tem o e-mail da
+  pessoa em letra pequena por ~2 s — avisado).

@@ -12,6 +12,7 @@ NOITE = ("ida5", "ida6", "volta1", "volta2")      # cenas noturnas/telas: não p
 AMBIENTE_LUFS = -30.0 if versao == "v1" else -31.0  # som ambiente baixo, por baixo da narração/música
 VOZ_LUFS = -16.0
 GANHO_MAX = 18.0
+IGUALAR = os.environ.get("IGUALAR") == "1"  # correção de cor por corte (reprovada: "iluminação alterada")
 SAT_GLOBAL = float(os.environ.get("SAT_GLOBAL", "0.8"))
 
 def medir_cor(f):
@@ -59,10 +60,13 @@ for i, x in enumerate(cortes):
     du = clamp(0.6 * (k["UAVG"] - alvo_u), -6, 6) * 4
     dv = clamp(0.6 * (k["VAVG"] - alvo_v), -6, 6) * 4
     s = clamp(1 + 0.6 * (alvo_sat / max(k["SATAVG"], 1) - 1), 0.8, 1.0) * SAT_GLOBAL
-    v = ("format=yuv422p10le,"
-         f"lutyuv=u='clip(val-({du:.1f}),0,1023)':v='clip(val-({dv:.1f}),0,1023)',"
-         f"eq=gamma={g:.3f}:saturation={s:.3f}:contrast=1.04,"
-         "unsharp=5:5:0.25:5:5:0,setpts=PTS-STARTPTS")
+    if IGUALAR:
+        v = ("format=yuv422p10le,"
+             f"lutyuv=u='clip(val-({du:.1f}),0,1023)':v='clip(val-({dv:.1f}),0,1023)',"
+             f"eq=gamma={g:.3f}:saturation={s:.3f}:contrast=1.04,"
+             "unsharp=5:5:0.25:5:5:0,setpts=PTS-STARTPTS")
+    else:  # luz natural de cada vídeo: só a conversão HDR -> SDR feita no cortar.py
+        v = "format=yuv422p10le,setpts=PTS-STARTPTS"
     alvo_a = VOZ_LUFS if x["voz"] else AMBIENTE_LUFS
     ga = clamp(alvo_a - x["lufs"], -30, GANHO_MAX)
     dur = round((x["c"][2] - x["c"][1]) * FPS) / FPS
