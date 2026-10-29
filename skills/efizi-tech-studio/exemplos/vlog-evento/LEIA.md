@@ -10,6 +10,7 @@ narrar por cima e outra só com música), sem legenda nem encerramento. Os víde
 | `edl.py` | lista de cortes das duas versões (`V1` narrada ~67 s, `V2` música ~52 s), na ordem do dia |
 | `cortar.py` | cada corte → ProRes 422 HQ 10 bits, 1080×1920, 30 fps, SDR Rec.709 |
 | `montar.py` | iguala o volume de cada corte e junta: `python montar.py v1 cortes/ saida/v1.mp4` (`IGUALAR=1` liga a correção de cor por corte) |
+| `montar_hdr.py` | **versão entregue:** mantém o HDR do iPhone (HLG, BT.2020, HEVC Main10, 4K 60 fps); um corte por vez e junta sem recodificar |
 | `transcrever.py` | faster-whisper `medium` em pt, com tempo por palavra (para escolher a fala e o ponto de corte) |
 
 ## Lições deste vídeo
@@ -34,3 +35,11 @@ narrar por cima e outra só com música), sem legenda nem encerramento. Os víde
   desligar; janta = **um** pedaço, comendo (pose com a mão no cabelo saiu); a fala no meio do evento era
   desnecessária; o fim mostra a tela do notebook apagando, sem recorte (a tela de login tem o e-mail da
   pessoa em letra pequena por ~2 s — avisado).
+- **v3 → v4:** "não transforma em SDR, caiu a qualidade" → entrega em HLG (como o iPhone grava), 2160×3840 a 59,94 fps,
+  HEVC Main10 `hvc1`. Vídeo SDR vai para HLG com `zscale t=linear → exposure=1.2 → arib-std-b67/bt2020` (branco do
+  SDR em ~75% do sinal, BT.2408), conferido voltando para SDR: igual ao original.
+- **Abertura rápida** antes da ida: 7 cenas de 1,5 s do evento (robô dando tchau, palestras, assinatura na parede,
+  selfie, gol) para gerar curiosidade (`TEASER` no `edl.py`).
+- **Armadilhas:** `ffprobe … color_transfer -of csv=p=0` devolve `arib-std-b67,` (vírgula sobrando) nos arquivos
+  com Dolby Vision — sem limpar, todo HLG era tratado como SDR. 35 entradas 4K num único ffmpeg estouraram 14 GB de
+  memória (OOM, a máquina reiniciou) → um corte por vez + concat com `-c copy`.
